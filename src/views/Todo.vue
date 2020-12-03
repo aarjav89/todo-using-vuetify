@@ -17,6 +17,7 @@
 <script>
 import FieldAddTask from  '@/components/Todo/FieldAddTask.vue'
 import ListTasks from "@/components/Todo/ListTasks";
+import NoTasks from "@/components/Todo/NoTasks";
 
 export default {
   name: 'Home',
@@ -24,7 +25,7 @@ export default {
    components:{
       'field-add-task': FieldAddTask,
       'list-tasks' : ListTasks,
-     'no-tasks' : require('@/components/Todo/NoTasks')
+     'no-tasks' : NoTasks
    }
 
 

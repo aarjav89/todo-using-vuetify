@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     addTask() {
-      this.$store.commit('addTask', this.newTaskTitle)
+      this.$store.dispatch('addTask', this.newTaskTitle) // we call dispatch to use method in actions and not commit.
       this.newTaskTitle = ''
     }
   },
@@ -31,6 +31,3 @@ export default {
 </script>
 
 
-<style scoped>
-
-</style>
