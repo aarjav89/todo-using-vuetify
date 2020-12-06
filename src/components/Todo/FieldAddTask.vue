@@ -4,13 +4,23 @@
         v-model="newTaskTitle"
         outlined
         label="Add Task"
-        append-icon="mdi-plus"
+
         class="pa-3"
         hide-details
         clearable
-        @click:append="addTask()"
         @keyup.enter="addTask()"
-    ></v-text-field>
+    >
+
+      <template v-slot:append>
+        <v-icon
+           @click="addTask"
+           color="primary"
+           :disabled="!newTaskTitle"
+        > mdi-plus </v-icon>
+      </template>
+
+
+    </v-text-field>
   </div>
 </template>
 
@@ -23,10 +33,18 @@ export default {
   },
   methods: {
     addTask() {
-      this.$store.dispatch('addTask', this.newTaskTitle) // we call dispatch to use method in actions and not commit.
-      this.newTaskTitle = ''
+      if(!this.newTaskTitleInvalid){
+        this.$store.dispatch('addTask', this.newTaskTitle) // we call dispatch to use method in actions and not commit.
+        this.newTaskTitle = ''
+
+      }
     }
   },
+  computed:{
+    newTaskTitleInvalid(){
+      return !this.newTaskTitle
+    }
+  }
 }
 </script>
 

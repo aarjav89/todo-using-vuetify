@@ -59,6 +59,12 @@ export default new Vuex.Store({
     },
     hideSnackbar(state){
       state.snackbar.show = false
+    },
+    updateTaskTitle(state, payload){
+     //console.log(payload)
+      let task = state.tasks.filter(task => task.id === payload.id)[0]
+      task.title = payload.title
+
     }
   },
   actions: { //note: to invoke any methods, you have to dispatch an action
@@ -69,6 +75,10 @@ export default new Vuex.Store({
     deleteTask({commit},id){
       commit('deleteTask',id)
       commit('showSnackbar','Task Deleted')
+    },
+    updateTaskTitle({commit},payload){
+      commit('updateTaskTitle',payload)
+      commit('showSnackbar','Task Updated !')
     }
 
   },
