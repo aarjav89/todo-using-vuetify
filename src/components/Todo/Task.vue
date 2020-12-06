@@ -15,14 +15,10 @@
         </v-list-item-content>
 
         <v-list-item-action>
-          <v-btn
-              @click.stop="dialogs.delete=true"
-              icon>
-                <v-icon color="primary lighten-1">mdi-delete</v-icon>
-              </v-btn>
+          <task-menu :task="task"/>
            </v-list-item-action>
 
-        <dialog-delete v-if="dialogs.delete" :task="task" @close="dialogs.delete=false"/>
+
       </template>
     </v-list-item>
 
@@ -33,15 +29,8 @@
 <script>
 export default {
   props: ['task'],
-  data(){
-    return{
-      dialogs:{
-        delete: false
-      }
-    }
-  },
   components: {
-    'dialog-delete':require('@/components/Shared/ModalDialog').default
+    'task-menu':require('@/components/Todo/TaskMenu').default
   }
 }
 </script>
