@@ -27,7 +27,7 @@ export default new Vuex.Store({
       text: ''
     }
   },
-  mutations: {
+  mutations: { // note: to invoke any methods, you have to commit a mutation
     addTask(state,newTaskTitle ){
       let newTask = {
         id: Date.now(),
@@ -61,7 +61,7 @@ export default new Vuex.Store({
       state.snackbar.show = false
     }
   },
-  actions: {
+  actions: { //note: to invoke any methods, you have to dispatch an action
     addTask({commit}, newTaskTitle){
       commit('addTask',newTaskTitle )
       commit('showSnackbar','Task Added')
