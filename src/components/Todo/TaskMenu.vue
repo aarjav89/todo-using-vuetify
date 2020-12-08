@@ -30,6 +30,7 @@
   </v-menu>
     <dialog-delete v-if="dialogs.delete" :task="task" @close="dialogs.delete=false"/>
     <dialog-edit v-if="dialogs.edit" :task="task" @close="dialogs.edit=false"/>
+    <dialog-duedate v-if="dialogs.dueDate" :task="task" @close="dialogs.dueDate=false"/>
   </div>
 </template>
 
@@ -40,25 +41,28 @@ export default {
      return{
        dialogs:{
          delete: false,
-         edit:false
+         edit:false,
+         dueDate:false
        },
        items: [
-         { title: 'Edit',
+         {
+           title: 'Edit',
            icon:'mdi-pencil',
            click(){
               this.dialogs.edit=true
            }
          },
-         { title: 'Due Date',
+         {
+           title: 'Due Date',
           icon:'mdi-calendar',
            click(){
-
+              this.dialogs.dueDate=true
            }
          },
-         { title: 'Delete',
+         {
+           title: 'Delete',
           icon:'mdi-delete',
            click(){
-
              this.dialogs.delete = true
            }
          }
@@ -72,7 +76,8 @@ export default {
   },
   components:{
     'dialog-delete':require('@/components/Shared/ModalDialogDelete').default,
-    'dialog-edit':require('@/components/Shared/ModalDialogEdit').default
+    'dialog-edit':require('@/components/Shared/ModalDialogEdit').default,
+    'dialog-duedate':require('@/components/Todo/DialogDueDate').default
   }
 }
 </script>
