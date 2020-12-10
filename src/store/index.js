@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    searchText:null,
     tasks:[
       {
         id:1,
@@ -31,6 +32,10 @@ export default new Vuex.Store({
     }
   },
   mutations: { // note: to invoke any methods, you have to commit a mutation
+    setSearch(state,value){
+      //console.log('value',value)
+      state.searchText=value
+    },
     addTask(state,newTaskTitle ){
       let newTask = {
         id: Date.now(),
@@ -95,6 +100,12 @@ export default new Vuex.Store({
       commit('showSnackbar','Due Date Updated !')
     }
   },
-  modules: {
+  getters: {
+    tasksFiltered(state){
+      if(!state.searchText)
+        return state.tasks
+      else
+        return state.tasks.filter(task => task.title.toLowerCase().includes(state.searchText.toLowerCase()) )
+     }
   }
 })

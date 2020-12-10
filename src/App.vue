@@ -49,7 +49,10 @@
         dark
         src="mountains.jpg"
         prominent
+        height="170"
     >
+      <!-- prominent attribute increases the height of toolbar content to 128px -->
+
       <template v-slot:img="{ props }">
         <v-img
             v-bind="props"
@@ -57,23 +60,33 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-container class="pa-0">
+        <v-row>
+          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-spacer></v-spacer>
+          <search />
+        </v-row>
 
-      <v-toolbar-title>Aarjav's Todo List</v-toolbar-title>
+        <v-row>
+          <v-toolbar-title class="ml-3 text-h4">Aarjav's Todo List</v-toolbar-title>
+        </v-row>
 
-      <v-spacer></v-spacer>
+        <v-row>
+            <live-date-time />
+        </v-row>
+      </v-container>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+
+
+
+
+
+
+
+
+
     </v-app-bar>
 
     <v-main>
@@ -93,7 +106,9 @@ export default {
     ]
   }),
   components:{
-    snackbar : require('@/components/Shared/Snackbar').default
+    search : require('@/components/Tools/Search').default,
+    snackbar : require('@/components/Shared/Snackbar').default,
+    'live-date-time' : require('@/components/Tools/LiveDateTime').default
   }
 }
 </script>

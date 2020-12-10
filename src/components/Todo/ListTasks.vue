@@ -2,7 +2,7 @@
   <v-list>
 
     <task
-        v-for="task in $store.state.tasks" :key="task.id"
+        v-for="task in $store.getters.tasksFiltered" :key="task.id"
         :task="task" />
 
   </v-list>
