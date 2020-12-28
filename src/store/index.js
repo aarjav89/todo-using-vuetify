@@ -30,7 +30,8 @@ export default new Vuex.Store({
     snackbar:{
       show:false,
       text: ''
-    }
+    },
+    appTitle: process.env.VUE_APP_TITLE
   },
   mutations: { // note: to invoke any methods, you have to commit a mutation
     setSearch(state,value){

@@ -68,7 +68,9 @@
         </v-row>
 
         <v-row>
-          <v-toolbar-title class="ml-3 text-h4">Aarjav's Todo List</v-toolbar-title>
+          <v-toolbar-title class="ml-3 text-h4">
+            {{ $store.state.appTitle }}
+           </v-toolbar-title>
         </v-row>
 
         <v-row>
@@ -109,6 +111,7 @@ export default {
     search : require('@/components/Tools/Search').default,
     snackbar : require('@/components/Shared/Snackbar').default,
     'live-date-time' : require('@/components/Tools/LiveDateTime').default
-  }
+  },
+
 }
 </script>
