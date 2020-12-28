@@ -79,16 +79,6 @@
       </v-container>
 
 
-
-
-
-
-
-
-
-
-
-
     </v-app-bar>
 
     <v-main>
@@ -115,3 +105,12 @@ export default {
 
 }
 </script>
+
+
+<style>
+.container{
+  margin-left: 5px !important;
+  max-width: 1825px !important;
+}
+
+</style>
