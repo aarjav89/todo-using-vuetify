@@ -3,6 +3,8 @@
     <v-list-item
         @click="$store.commit('doneTask',task.id)"
         :class="{ 'blue lighten-5' : task.done }"
+        :ripple="false"
+        class="white"
     >
       <template v-slot:default>
         <v-list-item-action>
@@ -19,16 +21,28 @@
            <v-list-item-action-text>
              <v-icon small > mdi-calendar </v-icon>
              {{ task.dueDate | niceDate}}
-             <!-- here niceDate is the name of the filter property we created below. It uses date-fns JS library to format the date -->
+             <!-- here niceDate is the name of the filter property we created below. It uses moment JS library to format the date -->
            </v-list-item-action-text>
         </v-list-item-action>
         <!-- code for Due date ends -->
 
-        <!-- code for 3 dots menu starts -->
+      <!-- code for vertical dots menu -->
         <v-list-item-action>
           <task-menu :task="task"/>
         </v-list-item-action>
         <!-- code for 3 dots menu starts -->
+
+        <!-- code for displaying sort icon in grid starts -->
+        <v-list-item-action v-if="$store.state.sorting">
+          <v-btn
+              class="handle"
+            color="primary"
+            icon
+            >
+            <v-icon> mdi-drag-horizontal-variant </v-icon>
+          </v-btn>
+        </v-list-item-action>
+        <!-- code for displaying sort icon in grid ends -->
 
 
 
@@ -56,4 +70,14 @@ export default {
   }
 }
 </script>
+
+<style>
+.sortable-ghost{
+  opacity: 0;
+}
+
+.sortable-drag{
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+</style>
 

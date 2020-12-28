@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     searchText:null,
+    sorting:false,
     tasks:[
       {
         id:1,
@@ -80,6 +81,12 @@ export default new Vuex.Store({
       let task = state.tasks.filter(task => task.id === payload.id)[0]
       task.dueDate = payload.dueDate
 
+    },
+    setTasks(state,tasks){
+      state.tasks = tasks
+    },
+    toggleSorting(state){
+      state.sorting=!state.sorting
     }
   },
   actions: { //note: to invoke any methods, you have to dispatch an action
